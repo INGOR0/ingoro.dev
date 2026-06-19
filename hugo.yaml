@@ -1,0 +1,62 @@
+baseURL: "https://ingoro.dev/"
+title: "ingoro.dev"
+paginate: 5
+theme: PaperMod
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    menus:
+      main:
+        - name: Devlogs
+          url: /devlogs/
+          weight: 1
+        - name: Tutorials
+          url: /tutorials/
+          weight: 2
+    params:
+      profileMode:
+        enabled: true
+        title: "INGORO"
+        subtitle: "Only by breaking something can we get to fix it"
+        imageUrl: ""
+        imageTitle: ""
+  es:
+    languageName: "Español"
+    weight: 2
+    menus:
+      main:
+        - name: Devlogs
+          url: /es/devlogs/
+          weight: 1
+        - name: Tutoriales
+          url: /es/tutorials/
+          weight: 2
+    params:
+      profileMode:
+        enabled: true
+        title: "INGORO"
+        subtitle: "Solo rompiendo algo podemos llegar a arreglarlo"
+        imageUrl: ""
+        imageTitle: ""
+
+params:
+  env: production
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  showtoc: true
+
+

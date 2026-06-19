@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Devlogs on ingoro.dev</title>
+    <link>http://localhost:1313/devlogs/</link>
+    <description>Recent content in Devlogs on ingoro.dev</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 19 Jun 2026 13:12:34 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/devlogs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Beginning</title>
+      <link>http://localhost:1313/devlogs/001-the-beginning/</link>
+      <pubDate>Fri, 19 Jun 2026 13:12:34 +0200</pubDate>
+      <guid>http://localhost:1313/devlogs/001-the-beginning/</guid>
+      <description>&lt;h2 id=&#34;the-reasoning-behind-the-bad-idea&#34;&gt;The reasoning behind the bad idea&lt;/h2&gt;
+&lt;p&gt;Although the value of OS projects has been discussed for decades and it is completely true that it is impossible for a single human being to be able to beat what has been built in the span of almost half a century by sheer willpower alone, many fail to identify that it is as much of a waste of time as it is playing videogames, partying or painting (to list a few examples). While a person should aspire to become the best version of themselves and of course aim to be productive in their day-to-day life, they should also not deprive themselves of the comfort that is having activities that aren&amp;rsquo;t aimed at making the best out of the limited time they have on Earth. If people only worked towards goals that granted them success in areas like money, it would be unhealthy and much harder to maintain than doing the same things but with hobbies aside. If you want to spend your free time doing something, as long as you don&amp;rsquo;t harm others or yourself, you should do it.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
