@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hello World! | ingoro.dev</title>
+<meta name="keywords" content="">
+<meta name="description" content="Greeting the world as we&rsquo;re always taught
+No matter what, every single time you learn a new programming language or somehow mess with software that you haven&rsquo;t yet tried out, you will or should start by the Hello World! program, which is nothing more than getting a text saying exactly that. Since I chose to target firmware instead of hardware so that when I switch to an actual chip I don&rsquo;t have to rewrite my code, I need to learn what OpenSBI is.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/devlogs/002-hello-world/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.792204b82c65806b71213b83d8fb0e53e8b7aa8c232089a2d8929df6559f16ad.css" integrity="sha256-eSIEuCxlgGtxITuD2PsOU&#43;i3qowjIImi2JKd9lWfFq0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/devlogs/002-hello-world/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="http://localhost:1313/devlogs/002-hello-world/">
+  <meta property="og:site_name" content="ingoro.dev">
+  <meta property="og:title" content="Hello World!">
+  <meta property="og:description" content="Greeting the world as we’re always taught No matter what, every single time you learn a new programming language or somehow mess with software that you haven’t yet tried out, you will or should start by the Hello World! program, which is nothing more than getting a text saying exactly that. Since I chose to target firmware instead of hardware so that when I switch to an actual chip I don’t have to rewrite my code, I need to learn what OpenSBI is.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="devlogs">
+    <meta property="article:published_time" content="2026-06-19T20:25:03+02:00">
+    <meta property="article:modified_time" content="2026-06-19T20:25:03+02:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hello World!">
+  <meta name="twitter:description" content="Greeting the world as we’re always taught No matter what, every single time you learn a new programming language or somehow mess with software that you haven’t yet tried out, you will or should start by the Hello World! program, which is nothing more than getting a text saying exactly that. Since I chose to target firmware instead of hardware so that when I switch to an actual chip I don’t have to rewrite my code, I need to learn what OpenSBI is.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Devlogs",
+      "item": "http://localhost:1313/devlogs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hello World!",
+      "item": "http://localhost:1313/devlogs/002-hello-world/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hello World!",
+  "name": "Hello World!",
+  "description": "Greeting the world as we\u0026rsquo;re always taught No matter what, every single time you learn a new programming language or somehow mess with software that you haven\u0026rsquo;t yet tried out, you will or should start by the Hello World! program, which is nothing more than getting a text saying exactly that. Since I chose to target firmware instead of hardware so that when I switch to an actual chip I don\u0026rsquo;t have to rewrite my code, I need to learn what OpenSBI is.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Greeting the world as we’re always taught No matter what, every single time you learn a new programming language or somehow mess with software that you haven’t yet tried out, you will or should start by the Hello World! program, which is nothing more than getting a text saying exactly that. Since I chose to target firmware instead of hardware so that when I switch to an actual chip I don’t have to rewrite my code, I need to learn what OpenSBI is.\nWhat is OpenSBI? The simplest way to put it is that OpenSBI is the UEFI of RISC-V machines. I know it is different, but if you think about it, it’s the firmware that exists before handing control over to your code and it provides calls that you can take advantage of. OpenSBI is the open source implementation of the RISC-V SBI specification; it’s meant to be minimal and modular.\nRISC-V’s privilege levels There are four privilege levels:\nM-Mode or machine mode. It’s the highest and most privileged mode in RISC-V. H or hypervisor. It’s not available yet in real hardware (mostly skipped). S-Mode or supervisor mode. It’s what we’ll use to conduct operations at OS level. U-Mode or user mode. This will be the one used for user applications. OpenSBI changes the environment from machine mode to supervisor mode so that it’s ready for the kernel to boot.\nSetting up the environment Before even attempting to write any assembly, I need an emulator that supports both RISC-V and its firmware. The most obvious answer is QEMU, so I’ll use that.\nInstalling QEMU for RISC-V and OpenSBI emulation This isn’t a tutorial; tutorials have their own page, but those will be future clean versions of what I learn and could need again in the future. First and only time I’ll explain why both things exist. To run QEMU with RISC-V and OpenSBI, I need to have the proper packages, so I run:\nsudo pacman -S qemu-system-riscv After an update I didn’t know I needed and a reboot, I could launch a VM that talks to a terminal (instead of having it in a window since there are no applications that use graphics at all):\nqemu-system-riscv64 -machine virt -bios default -nographic This is what I could see:\nCreating the Makefile The Makefile is used so that instead of having to type (or paste) some commands we can just do “make run”, “make build” or “make clean”. To start, I create the file with:\nnvim Makefile And then I write:\nQEMU = qemu-system-riscv64 MACHINE = virt BIOS = default run: $(QEMU) -machine $(MACHINE) -bios $(BIOS) -nographic clean: rm -f *.elf *.bin *.o By declaring variables at the top, I can easily change them later if needed. Then I defined the run target so that typing make run it executes the command given (again, using variables so that changing it later is easier). Quick note: it’s mandatory to use a tab, not spaces. Since once I start compiling assembly it’ll produce .o and .elf binaries that I’ll want to delete before testing with other versions, I make the clean target to delete anything that’s compiled. Hopefully this decision will not bite me later.\nTime to print some greetings Targeting RISC-V requires you to use RISC-V assembly. Assembly uses labels for the “functions”, so that should be the very start. The instruction that allows you to load a value is li, which stands for load immediate. RISC-V has load instructions, but li is specifically “load this value directly into a register”, while the other ones would be “go to this address in RAM and load what’s in there”. Since I’m passing characters directly, I need li. Then I need to know which registers I’ll be using for this. OpenSBI in specific expects the function to be at a7 and the argument to be at a0. This is a convention, like many other things that may not make sense but have always been like this. They are both 64 bits long. With what I said now, I can make an assembly program that goes straight into instructions I wrote and starts loading characters into registers… and then it stays there. Why? Well I said a7 needs a function, and since I’m trying to print a character I just put in a register, I need the write function. In this case it is 0x01, so I am loading a character into a0 and then loading the function into a7 so I am ready to execute the instruction “write this character to the console”. This is done with ecall, which triggers an environment call. The reason why it works is that it’s a trap instruction. When the code executes it, the CPU stops what it’s doing and jumps to a handler set up by a higher privilege level. That higher level is OpenSBI, which runs in M-Mode. My code runs in a sandboxed environment, S-Mode, and I don’t have direct access to hardware. Instead, I ask someone who can, as if I was raising my hand so that I get help. What happens is like:\nFreezes the code. Looks up where OpenSBI told it to go when this happens. Jumps to that place. OpenSBI reads a7 to know what I want to do (in this case print) and a0 to get the argument (in this case the value I want to print). Writes the character to UART itself. Returns control back to my code. The last but not least important thing is to stop the CPU from executing whatever is at memory after my code. This is to say if I don’t manually make the CPU stop or wait, it’d keep executing whatever it can until it eventually breaks (or at least behaves unpredictably). To tell the CPU to stop and wait, I’ll use wfi.\n",
+  "wordCount" : "970",
+  "inLanguage": "en",
+  "datePublished": "2026-06-19T20:25:03+02:00",
+  "dateModified": "2026-06-19T20:25:03+02:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/devlogs/002-hello-world/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ingoro.dev",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="ingoro.dev (Alt + H)">ingoro.dev</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/devlogs/" title="Devlogs">
+                    <span>Devlogs</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tutorials/" title="Tutorials">
+                    <span>Tutorials</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/devlogs/">Devlogs</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      Hello World!
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-06-19 20:25:03 +0200 CEST'>June 19, 2026</span>&nbsp;·&nbsp;<span>5 min</span>
+
+</div>
+  </header> <details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#greeting-the-world-as-were-always-taught" aria-label="Greeting the world as we&rsquo;re always taught">Greeting the world as we&rsquo;re always taught</a></li>
+            <li>
+                <a href="#what-is-opensbi" aria-label="What is OpenSBI?">What is OpenSBI?</a></li>
+            <li>
+                <a href="#risc-vs-privilege-levels" aria-label="RISC-V&rsquo;s privilege levels">RISC-V&rsquo;s privilege levels</a></li>
+            <li>
+                <a href="#setting-up-the-environment" aria-label="Setting up the environment">Setting up the environment</a><ul>
+                    
+            <li>
+                <a href="#installing-qemu-for-risc-v-and-opensbi-emulation" aria-label="Installing QEMU for RISC-V and OpenSBI emulation">Installing QEMU for RISC-V and OpenSBI emulation</a></li>
+            <li>
+                <a href="#creating-the-makefile" aria-label="Creating the Makefile">Creating the Makefile</a></li></ul>
+            </li>
+            <li>
+                <a href="#time-to-print-some-greetings" aria-label="Time to print some greetings">Time to print some greetings</a>
+            </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h2 id="greeting-the-world-as-were-always-taught">Greeting the world as we&rsquo;re always taught<a hidden class="anchor" aria-hidden="true" href="#greeting-the-world-as-were-always-taught">#</a></h2>
+<p>No matter what, every single time you learn a new programming language or somehow mess with software that you haven&rsquo;t yet tried out, you will or should start by the <code>Hello World!</code> program, which is nothing more than getting a text saying exactly that. Since I chose to target firmware instead of hardware so that when I switch to an actual chip I don&rsquo;t have to rewrite my code, I need to learn what OpenSBI is.</p>
+<h2 id="what-is-opensbi">What is OpenSBI?<a hidden class="anchor" aria-hidden="true" href="#what-is-opensbi">#</a></h2>
+<p>The simplest way to put it is that OpenSBI is the UEFI of RISC-V machines. I know it is different, but if you think about it, it&rsquo;s the firmware that exists before handing control over to your code and it provides calls that you can take advantage of. OpenSBI is the open source implementation of the RISC-V SBI specification; it&rsquo;s meant to be minimal and modular.</p>
+<h2 id="risc-vs-privilege-levels">RISC-V&rsquo;s privilege levels<a hidden class="anchor" aria-hidden="true" href="#risc-vs-privilege-levels">#</a></h2>
+<p>There are four privilege levels:</p>
+<ul>
+<li><strong>M-Mode or machine mode.</strong> It&rsquo;s the highest and most privileged mode in RISC-V.</li>
+<li><strong>H or hypervisor.</strong> It&rsquo;s not available yet in real hardware (mostly skipped).</li>
+<li><strong>S-Mode or supervisor mode.</strong> It&rsquo;s what we&rsquo;ll use to conduct operations at OS level.</li>
+<li><strong>U-Mode or user mode.</strong> This will be the one used for user applications.</li>
+</ul>
+<p>OpenSBI changes the environment from machine mode to supervisor mode so that it&rsquo;s ready for the kernel to boot.</p>
+<h2 id="setting-up-the-environment">Setting up the environment<a hidden class="anchor" aria-hidden="true" href="#setting-up-the-environment">#</a></h2>
+<p>Before even attempting to write any assembly, I need an emulator that supports both RISC-V and its firmware. The most obvious answer is QEMU, so I&rsquo;ll use that.</p>
+<h3 id="installing-qemu-for-risc-v-and-opensbi-emulation">Installing QEMU for RISC-V and OpenSBI emulation<a hidden class="anchor" aria-hidden="true" href="#installing-qemu-for-risc-v-and-opensbi-emulation">#</a></h3>
+<p>This isn&rsquo;t a tutorial; tutorials have their own page, but those will be future clean versions of what I learn and could need again in the future. First and only time I&rsquo;ll explain why both things exist. To run QEMU with RISC-V and OpenSBI, I need to have the proper packages, so I run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S qemu-system-riscv
+</span></span></code></pre></div><p>After an update I didn&rsquo;t know I needed and a reboot, I could launch a VM that talks to a terminal (instead of having it in a window since there are no applications that use graphics at all):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qemu-system-riscv64 -machine virt -bios default -nographic
+</span></span></code></pre></div><p>This is what I could see:</p>
+<p><img alt="Screenshot of a terminal emulator running qemu-system-riscv64 with OpenSBI" loading="lazy" src="/devlogs/002-hello-world/pic001-first-riscv-boot.png"></p>
+<h3 id="creating-the-makefile">Creating the Makefile<a hidden class="anchor" aria-hidden="true" href="#creating-the-makefile">#</a></h3>
+<p>The Makefile is used so that instead of having to type (or paste) some commands we can just do &ldquo;make run&rdquo;, &ldquo;make build&rdquo; or &ldquo;make clean&rdquo;. To start, I create the file with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nvim Makefile
+</span></span></code></pre></div><p>And then I write:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Makefile" data-lang="Makefile"><span style="display:flex;"><span>QEMU <span style="color:#f92672">=</span> qemu-system-riscv64                                                           
+</span></span><span style="display:flex;"><span>MACHINE <span style="color:#f92672">=</span> virt                                                                       
+</span></span><span style="display:flex;"><span>BIOS <span style="color:#f92672">=</span> default                                                                       
+</span></span><span style="display:flex;"><span>                                                                                     
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">run</span><span style="color:#f92672">:</span>                                                                                 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">$(</span>QEMU<span style="color:#66d9ef">)</span> -machine <span style="color:#66d9ef">$(</span>MACHINE<span style="color:#66d9ef">)</span> -bios <span style="color:#66d9ef">$(</span>BIOS<span style="color:#66d9ef">)</span> -nographic                         
+</span></span><span style="display:flex;"><span>                                                                                     
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>                                                                               
+</span></span><span style="display:flex;"><span>        rm -f *.elf *.bin *.o
+</span></span></code></pre></div><p>By declaring variables at the top, I can easily change them later if needed. Then I defined the <code>run</code> target so that typing <code>make run</code> it executes the command given (again, using variables so that changing it later is easier). Quick note: it&rsquo;s mandatory to use a tab, not spaces. Since once I start compiling assembly it&rsquo;ll produce <code>.o</code> and <code>.elf</code> binaries that I&rsquo;ll want to delete before testing with other versions, I make the <code>clean</code> target to delete anything that&rsquo;s compiled. Hopefully this decision will not bite me later.</p>
+<h2 id="time-to-print-some-greetings">Time to print some greetings<a hidden class="anchor" aria-hidden="true" href="#time-to-print-some-greetings">#</a></h2>
+<p>Targeting RISC-V requires you to use RISC-V assembly. Assembly uses labels for the &ldquo;functions&rdquo;, so that should be the very start. The instruction that allows you to load a value is <code>li</code>, which stands for load immediate. RISC-V has <code>load</code> instructions, but <code>li</code> is specifically &ldquo;load this value directly into a register&rdquo;, while the other ones would be &ldquo;go to this address in RAM and load what&rsquo;s in there&rdquo;. Since I&rsquo;m passing characters directly, I need <code>li</code>. Then I need to know which registers I&rsquo;ll be using for this. OpenSBI in specific expects the function to be at <code>a7</code> and the argument to be at <code>a0</code>. This is a convention, like many other things that may not make sense but have always been like this. They are both 64 bits long. With what I said now, I can make an assembly program that goes straight into instructions I wrote and starts loading characters into registers&hellip; and then it stays there. Why? Well I said <code>a7</code> needs a function, and since I&rsquo;m trying to print a character I just put in a register, I need the <code>write</code> function. In this case it is <code>0x01</code>, so I am loading a character into <code>a0</code> and then loading the function into <code>a7</code> so I am ready to execute the instruction &ldquo;write this character to the console&rdquo;. This is done with <code>ecall</code>, which triggers an environment call. The reason why it works is that it&rsquo;s a trap instruction. When the code executes it, the CPU stops what it&rsquo;s doing and jumps to a handler set up by a higher privilege level. That higher level is OpenSBI, which runs in M-Mode. My code runs in a sandboxed environment, S-Mode, and I don&rsquo;t have direct access to hardware. Instead, I ask someone who can, as if I was raising my hand so that I get help. What happens is like:</p>
+<ol>
+<li>Freezes the code.</li>
+<li>Looks up where OpenSBI told it to go when this happens.</li>
+<li>Jumps to that place.</li>
+<li>OpenSBI reads <code>a7</code> to know what I want to do (in this case print) and <code>a0</code> to get the argument (in this case the value I want to print).</li>
+<li>Writes the character to UART itself.</li>
+<li>Returns control back to my code.</li>
+</ol>
+<p>The last but not least important thing is to stop the CPU from executing whatever is at memory after my code. This is to say if I don&rsquo;t manually make the CPU stop or wait, it&rsquo;d keep executing whatever it can until it eventually breaks (or at least behaves unpredictably). To tell the CPU to stop and wait, I&rsquo;ll use <code>wfi</code>.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/devlogs/001-the-beginning/">
+    <span class="title">« Prev</span>
+    <span>The Beginning</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">ingoro.dev</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

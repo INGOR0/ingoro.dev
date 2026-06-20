@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/devlogs/</loc>
-    <lastmod>2026-06-19T13:12:34+02:00</lastmod>
+    <lastmod>2026-06-19T20:25:03+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/devlogs/002-hello-world/</loc>
+    <lastmod>2026-06-19T20:25:03+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-06-19T13:12:34+02:00</lastmod>
+    <lastmod>2026-06-19T20:25:03+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/devlogs/001-the-beginning/</loc>
     <lastmod>2026-06-19T13:12:34+02:00</lastmod>
