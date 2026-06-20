@@ -6,12 +6,12 @@
     <description>Recent content in Devlogs on ingoro.dev</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 19 Jun 2026 20:25:03 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jun 2026 02:52:00 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/devlogs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World!</title>
       <link>http://localhost:1313/devlogs/002-hello-world/</link>
-      <pubDate>Fri, 19 Jun 2026 20:25:03 +0200</pubDate>
+      <pubDate>Sat, 20 Jun 2026 02:52:00 +0200</pubDate>
       <guid>http://localhost:1313/devlogs/002-hello-world/</guid>
       <description>&lt;h2 id=&#34;greeting-the-world-as-were-always-taught&#34;&gt;Greeting the world as we&amp;rsquo;re always taught&lt;/h2&gt;
 &lt;p&gt;No matter what, every single time you learn a new programming language or somehow mess with software that you haven&amp;rsquo;t yet tried out, you will or should start by the &lt;code&gt;Hello World!&lt;/code&gt; program, which is nothing more than getting a text saying exactly that. Since I chose to target firmware instead of hardware so that when I switch to an actual chip I don&amp;rsquo;t have to rewrite my code, I need to learn what OpenSBI is.&lt;/p&gt;</description>

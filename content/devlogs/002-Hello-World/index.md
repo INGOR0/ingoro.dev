@@ -196,3 +196,6 @@ make run
 The computer politely said:
 
 ![The computer greets its master](pic002-hello-world.png)
+
+## Links
+- [Kanak Shilledar's post about achieving the "Hello World!" in OpenSBI](https://kanakshilledar.github.io/2024-09-08/hello-opensbi)
