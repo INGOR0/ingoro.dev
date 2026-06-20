@@ -1,7 +1,7 @@
 +++
 date = '2026-06-20T16:27:00+02:00'
 draft = false
-title = 'Hello World!'
+title = 'Writing a printing function in assembly'
 +++
 ## Printing in assembly sucks
 One of the many things that help when developing any kind of software is being able to print. Printing can make it easier to follow the values of variables, error messages or even just be like "we're in step 2 now!" so that you don't lose track of where you are during testing. However, as it was shown in my previous devlog, printing in assembly is an absolute nightmare. For each and every time I want to show a message on the screen, I have to print each character individually, which means loading the "character" register and the "function" register individually each time and then make the call so that OpenSBI knows what I want to do. Because of that, I am gonna make a function so that I can pass strings and the function takes care of printing for me.
