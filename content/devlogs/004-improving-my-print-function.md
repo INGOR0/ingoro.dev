@@ -1,6 +1,6 @@
 +++
 date = '2026-06-21T00:54:35+02:00'
-draft = true
+draft = false 
 title = 'Improving My Print Function'
 +++
 ## Touching something that works
